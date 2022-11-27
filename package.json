@@ -1,0 +1,26 @@
+{
+  "name": "text_tools",
+  "version": "1.0.0",
+  "description": "tools for text generation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owenroberts/text_tools.git"
+  },
+  "author": "owenribbit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/owenroberts/text_tools/issues"
+  },
+  "homepage": "https://github.com/owenroberts/text_tools#readme",
+  "dependencies": {
+    "natural": "^5.2.3"
+  },
+  "devDependencies": {
+    "node-color-log": "^10.0.2",
+    "prompt-sync": "^4.2.0"
+  }
+}
