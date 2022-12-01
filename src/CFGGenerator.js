@@ -101,7 +101,6 @@ function CFGGenerator(params) {
 				return expansion;
 			}
 		}
-		
 		if (grammars[gid][start]) {
 			// if there's a filter, filter options to include POS in filter
 			let picks = filter[start] ? 
@@ -222,8 +221,10 @@ function CFGGenerator(params) {
 	this.getText = function(gid, st, override, filter) {
 		let sentenceType = st || defaultSentenceType;
 		if (typeof override === 'string') override = JSON.parse(override);
-		if (!grammars[gid][st]) st = 'S';
-		if (!grammars[gid][st].length && !override[st]) st = 'S';
+		if (!override[st]) {
+			if (!grammars[gid][st]) st = 'S';
+			if (!grammars[gid][st].length) st = 'S';
+		}
 		let result = expand(gid, st, [], override || {}, filter || {});
 		// maybe can add tags directly to filter here ... 
 		return { text: formatSentence(result), tags: result };

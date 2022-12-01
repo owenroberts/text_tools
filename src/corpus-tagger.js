@@ -117,6 +117,11 @@ for (let i = 0; i < lines.length; i++) {
 
 		tagged = checkChanged(tagged); // check for previous changes to same tag
 
+		// vbg often wrong, alert to vbg
+		if (tagged.map(t => t.tag).includes('VBG')) {
+			logger.color('yellow').log('Includes VGB');
+		}
+
 		const acceptFullSentence = runWithoutInput ? 'y' :
 			prompt("Accept full sentence? (R rewrite/ N change tags / Q save and quit) Y/n: ", 'y')
 			.toLowerCase();
