@@ -84,6 +84,7 @@ function CFGGenerator(params) {
 	}
 
 	function expand(gid, start, expansion, override, filter, prev) {
+		// console.log('expand', start, override)
 		if (override[start]) {
 			if (override[start].length > 0) {
 				let pick = choice(override[start]);
@@ -233,4 +234,8 @@ function CFGGenerator(params) {
 
 if (typeof module !== 'undefined') {
 	module.exports = { CFGGenerator };
+}
+
+if (typeof window !== 'undefined') {
+	window.CFGGenerator = CFGGenerator;
 }

@@ -20,6 +20,7 @@ const natural = require('natural');
 // different tokenizers: http://naturalnode.github.io/natural/Tokenizers.html
 const wordTokenizer = new natural.WordPunctTokenizer(); // WordTokenizer -- no punctuation ...
 const sentTokenizer = new natural.SentenceTokenizer();
+// try sent new but throws and erorr
 
 const { formatLine, formatSent, formatSents, formatTagged, formatPunc, replacePOS, taggedFromTaggedSent, taggedSentFromTagged, getTags, sentFromTaggedSent, sentFromTagged, addTaggedWordsToGrammar, createGrammar, combineNNP } = require('./utils.js');
 
@@ -119,7 +120,7 @@ for (let i = 0; i < lines.length; i++) {
 
 		// vbg often wrong, alert to vbg
 		if (tagged.map(t => t.tag).includes('VBG')) {
-			logger.color('yellow').log('Includes VGB');
+			logger.color('yellow').log('Includes VBG');
 		}
 
 		const acceptFullSentence = runWithoutInput ? 'y' :
