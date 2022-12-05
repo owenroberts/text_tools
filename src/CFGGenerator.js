@@ -52,7 +52,7 @@ function CFGGenerator(params) {
 		// if (callback) callback();
 	}
 
-	this.feed = function(gid, json) {
+	this.feed = function(gid, json, addOverrides=true) {
 		if (!overrides[gid]) overrides[gid] = {};
 		if (!grammars[gid]) grammars[gid] = {};
 		if (!markovs[gid]) markovs[gid] = {};
@@ -70,6 +70,8 @@ function CFGGenerator(params) {
 			}
 		}
 
+		if (!addOverrides) return;
+
 		if (!overridePosKeys[gid]) overridePosKeys[gid] = [];
 		if (!overrideFilter[gid]) overrideFilter[gid] = [];
 		overridePosKeys[gid] = overridePosKeys[gid]
@@ -81,6 +83,7 @@ function CFGGenerator(params) {
 			this.isReady = true;
 			if (callback) callback();
 		}
+
 	}
 
 	function expand(gid, start, expansion, override, filter, prev) {
@@ -219,14 +222,14 @@ function CFGGenerator(params) {
 	};
 
 	// filter prefers sequences containing pos in filter
-	this.getText = function(gid, st, override, filter) {
+	this.getText = function(gid, st, override={}, filter={}) {
 		let sentenceType = st || defaultSentenceType;
 		if (typeof override === 'string') override = JSON.parse(override);
 		if (!override[st]) {
 			if (!grammars[gid][st]) st = 'S';
 			if (!grammars[gid][st].length) st = 'S';
 		}
-		let result = expand(gid, st, [], override || {}, filter || {});
+		let result = expand(gid, st, [], override, filter);
 		// maybe can add tags directly to filter here ... 
 		return { text: formatSentence(result), tags: result };
 	};

@@ -23,6 +23,8 @@ Creating a context free grammar from a text
 		- abbreviations like Mr., Dr. H. P. Blavatsky
 - Generate a CFG with *save-grammar.js* (corpus-tagger will do this as well, but it can be run again on the existing tagged file)
 	- first arg is the file, second is max length of a sentence save to SQEF
+	- Unfold and review the data, sometimes there's typos and weird shit
+		- Don't edit CFG, fix the tagged file
 - Run tests with *test-sentences.js* and choose sentences to keep or not in sent grammar
 	- easier if only saving shorter sentences to the grammar
 	- this generates the pos and sent files

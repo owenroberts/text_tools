@@ -146,7 +146,7 @@ function addTaggedWordsToGrammar(tagged, grammar) {
 		if (!tag.includes('NNP') || token === 'I') token = token.toLowerCase();
 		if (token.match(/Mr\.\w+/)) token = token.replace(/Mr\./, 'Mr. ');
 		if (token.includes('_')) token = token.replace('_', ' '); // add underscore for two part words
-		if (tag === 'Q') console.log(tag, token, grammar[tag], !grammar[tag])
+		// if (tag === 'Q') console.log(tag, token, grammar[tag], !grammar[tag]) // ?
 		if (!grammar[tag]) grammar[tag] = [];
 		if (!grammar[tag].flatMap(t => t).includes(token)) grammar[tag].push([token]);
 	}
